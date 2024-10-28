@@ -6,18 +6,30 @@
 > 
 > [youtube](https://www.youtube.com/watch?v=y6XCebnB9gs)
 
-## Installation
-Install GNU Stow
-### macOS:
+## Usage
+### Install GNU Stow
+#### macOS:
 ```bash
 brew install stow
 ```
-### Arch Linux:
+#### Arch Linux:
 ```bash
 sudo pacman -S stow
 ```
-### Linux Mint (Ubuntu/Debian-based):
+#### Linux Mint (Ubuntu/Debian-based):
 ```bash
 sudo apt update
 sudo apt install stow
+```
+
+### Clone the repo
+```bash
+cd
+git clone git@github.com:ValentinTT/.dotfiles.git
+```
+
+### Create the symblink for each config
+```bash
+cd ~/dotfiles
+stow nvim
 ```
