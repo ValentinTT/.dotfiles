@@ -20,6 +20,7 @@ return {
 					"jdtls",
 					"pyright",
 					"ts_ls",
+                    "sqls",
 				},
 			})
 		end,
@@ -31,43 +32,46 @@ return {
 
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			-- Lua
-			lspconfig.lua_ls.setup({
-                capabilities = capabilities
-            })
+			lspconfig.lua_ls.setup({ capabilities = capabilities })
 
 			-- C/C++
-			lspconfig.clangd.setup({
-                capabilities = capabilities
-            })
+			lspconfig.clangd.setup({ capabilities = capabilities })
 
 			-- Docker Compose
-			lspconfig.docker_compose_language_service.setup({
-                capabilities = capabilities
-            })
+			lspconfig.docker_compose_language_service.setup({ capabilities = capabilities })
 
 			-- Docker
-			lspconfig.dockerls.setup({
-                capabilities = capabilities
-            })
+			lspconfig.dockerls.setup({ capabilities = capabilities })
 
 			-- Go
-			lspconfig.gopls.setup({
-                capabilities = capabilities
-            })
+			lspconfig.gopls.setup({ capabilities = capabilities })
 
 			-- Java
-			lspconfig.jdtls.setup({
-                capabilities = capabilities
-            })
+			lspconfig.jdtls.setup({ capabilities = capabilities })
 
 			-- Python
-			lspconfig.pyright.setup({
-                capabilities = capabilities
-            })
+			lspconfig.pyright.setup({ capabilities = capabilities })
 
 			-- TypeScript / JavaScript
-			lspconfig.ts_ls.setup({
-                capabilities = capabilities
+			lspconfig.ts_ls.setup({ capabilities = capabilities })
+
+            -- SQL 
+            lspconfig.sqls.setup({
+                capabilities = capabilities,
+                settings = {
+                    sqls = {
+                        connections = {
+                            {
+                                driver = 'mysql',
+                                dataSourceName = 'username:password@tcp(127.0.0.1:3306)/database'
+                            },
+                            {
+                                driver = 'postgresql',
+                                dataSourceName = 'postgres://user:password@localhost:5432/database?sslmode=disable'
+                            }
+                        }
+                    }
+                }
             })
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
